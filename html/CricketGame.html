@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cricketgame.css">
+    <title>Cricket Game</title>
+</head>
+<body>
+    <h1>Bat Ball Stump Game</h1>
+        <button onclick="UserSel('Bat')"><img src="/rss/bat.jpg" alt="Bat"></button>
+        <button onclick="UserSel('Ball')"><img src="/rss/ball.jpg" alt="Ball"></button>
+        <button onclick="UserSel('Stump')"><img src="/rss/Stump.jpg" alt="Stump"></button>
+    
+    <h2 class="user-move"></h2>
+    <h2 class="computer-move"></h2>
+    <h2 class="result"></h2>
+    <h2 class="score"></h2>
+    <button class="reset-btn" onclick="ResetScore()">Reset</button>
+    
+    <script>
+        let score;
+        checkPrevScore();
+        
+        let docScore = document.querySelector('.score');
+        let docUserMove = document.querySelector('.user-move');
+        let docComputerMove = document.querySelector('.computer-move');
+        let docResult = document.querySelector('.result');
+        function getComputerChoice(){
+            let choice = parseInt(Math.random()*3 + 1);
+            if(choice === 1){
+                return "Bat";
+            }
+            else if(choice === 2){
+                return "Ball";
+            }
+            else{
+                return "Stump";
+            }
+            return choice;
+        }
+
+        function ResetScore(){
+            score.win = 0;
+            score.lost = 0;
+            score.tie = 0;
+            localStorage.clear();
+            docResult.innerHTML = "Score Reset";
+            docUserMove.innerHTML = ""
+            docComputerMove.innerHTML = "";
+            docScore.innerHTML = `Score: ${score.displayScore()}.`;
+        }
+        function checkPrevScore(){
+            score = {
+                    win:0,
+                    lost:0,
+                    tie:0,
+                    displayScore: function(){
+                        return ` win: ${this.win} | lost: ${this.lost} | tie: ${this.tie}` 
+                    }
+            }
+            if(localStorage.getItem('score') != null){
+                let prevScore = JSON.parse(localStorage.getItem('score'));
+                score.win = prevScore.win;
+                score.lost = prevScore.lost;
+                score.tie = prevScore.tie;
+            }
+        }
+        function UserSel(userChoice){
+            // checkPrevScore();
+            docUserMove.innerHTML = `Your Choice: ${userChoice}.`;
+            let compChoice = getComputerChoice();
+            docComputerMove.innerHTML = `Computer Choice: ${compChoice}.`;
+            docResult.innerHTML = checkWinner(userChoice,compChoice);
+            docScore.innerHTML = `Score: ${score.displayScore()}.`;
+            localStorage.setItem('score',JSON.stringify(score));
+            console.log(score);
+        }
+
+        function checkWinner(userChoice, compChoice){
+            if(userChoice === compChoice){
+                score.tie +=1;
+                return "It's a Tie."
+            }
+            if(compChoice === "Bat" && userChoice == "Ball"){
+                score.lost +=1;
+                return `Computer Choice is ${compChoice}, Sorry you lose better luck next time!`;
+            }
+            else if(compChoice === "Bat"){
+                score.win +=1;
+                return `Computer Choice is ${compChoice}, Congratulations you won!!`
+            }
+            if(compChoice === "Ball" && userChoice == "Stump"){
+                score.lost +=1;
+                return `Computer Choice is ${compChoice}, Sorry you lose better luck next time!`;
+            }
+            else if(compChoice === "Ball"){
+                score.win +=1;
+                return `Computer Choice is ${compChoice}, Congratulations you won!!`
+            }
+            if(compChoice === "Stump" && userChoice == "Bat"){
+                score.lost +=1;
+                return `Computer Choice is ${compChoice}, Sorry you lose better luck next time!`;
+            }
+            else if(compChoice === "Stump"){
+                score.win +=1;
+                return `Computer Choice is ${compChoice}, Congratulations you won!!`
+            }
+        }
+    </script>
+</body>
+</html>

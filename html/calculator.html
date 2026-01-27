@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/calculator.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calc-container">
+        <div class="display-container">
+            <input id='dp' type ="text" class="display-box" disabled>            
+        </div>
+        <div class="btn-container">
+            
+            <button class="btn" onclick="regClick('1')">1</button>
+            <button class="btn" onclick="regClick('2')">2</button>
+            <button class="btn" onclick="regClick('3')">3</button>
+            <button class="btn" onclick="regClick('4')">4</button>
+            <button class="btn" onclick="regClick('5')">5</button>
+            <button class="btn" onclick="regClick('6')">6</button>
+            <button class="btn" onclick="regClick('7')">7</button>
+            <button class="btn" onclick="regClick('8')">8</button>
+            <button class="btn" onclick="regClick('9')">9</button>
+            <button class="btn" onclick="regClick('C')">C</button>
+            <button class="btn" onclick="regClick('0')">0</button>
+            <button class="btn" onclick="regClick('.')">.</button>
+            <button class="btn" onclick="regClick('+')">+</button>
+            <button class="btn" onclick="regClick('-')">-</button>
+            <button class="btn" onclick="regClick('*')">*</button>
+            <button class="btn" onclick="regClick('/')">/</button>
+            
+            <button class="btn" onclick="regClick('=')">=</button>
+        </div>
+    </div>
+    <script>
+        let display = document.querySelector('.display-box');
+        let num1=0;
+        let result = 0;
+        let operation = '';
+        function regClick(char){
+            
+            if (char=='+'|| char =='-' || char== '*' ||char =='/' ){
+                if(display.value!=""){
+                    if(num1 == 0){
+                        num1 = eval(display.value);
+                        operation = char;
+                        display.value = "";
+                    }
+                    else if(char == '+'){
+                        result = num1 + eval(display.value);
+                        display.value=result;
+                        num1=0;
+                    }
+                    else if(char == '-'){
+                        result = num1 - eval(display.value);
+                        display.value=result;
+                        num1=0;
+                    }
+                    else if(char == '*'){
+                        result = num1 * eval(display.value);
+                        display.value=result;
+                        num1=0;
+                    }
+                    else if(char == '/'){
+                        result = num1 / eval(display.value);
+                        display.value=result;
+                        num1=0;
+                    }
+                }
+            }
+            if(char=='='){
+                if(display.value=="" && num1!=0){
+                    display.value=num1;
+                    num1 = 0;
+                    return;
+                }
+                if(operation == ''){
+                    return;
+                }
+                else if(operation == '+'){
+                    result = num1 + eval(display.value);
+                    display.value=result;
+                    num1=0;
+                }
+                else if(operation == '-'){
+                    result = num1 - eval(display.value);
+                    display.value=result;
+                    num1=0;
+                }
+                else if(operation == '*'){
+                    result = num1 * eval(display.value);
+                    display.value=result;
+                    num1=0;
+                }
+                else if(operation == '/'){
+                    result = num1 / eval(display.value);
+                    display.value=result;
+                    num1=0;
+                }
+            }
+            if(char == '1' || char == '2' || char == '3' || char == '4' || char == '5' || char == '6' || char == '7' || char == '8' || char == '9' || char == '0' || char == '.'){
+                display.value = display.value + char;
+            }
+            if(char=='C'){
+                result1=0;
+                display.value='';
+            }
+        }
+    </script>
+</body>
+</html>

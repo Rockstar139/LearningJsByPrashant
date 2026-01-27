@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/22MyntraBagExercise.css">
+    <title>Myntra Bag Exercise</title>
+</head>
+<body>
+    <main>
+        <button class="button addToBag" onclick='addToBag(1)'>Add To Bag</button>
+        <button class="button wishlist" onclick="addToBag(-1)">MOVE TO WISHLIST</button>
+        <button class="button addToBag" onclick='addToBag(2)'>Add 1+1 sale item</button>
+
+        <h3 id="bagTotal">Your Bag Has 0 items</h3>
+    </main>
+    <script>
+        let cartTotal = 0;
+        function addToBag(num){
+            if(num == -1 && cartTotal == 0){
+                return;
+            }
+            cartTotal = cartTotal + num;
+            document.querySelector('#bagTotal').innerHTML = "Your Bag Has " + cartTotal + ' items';
+        }
+    </script>
+</body>
+</html>

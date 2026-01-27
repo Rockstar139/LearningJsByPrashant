@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+</head>
+<body>
+    <script>
+        let product = {
+            company: "Model",
+            'item-name': 't-shirt',
+            price: 890,
+            'delivery-time': '1 Day',
+        };
+
+        let product2 = {
+            company: "Model",
+            'item-name': 't-shirt',
+            price: 890,
+            'delivery-time': '2 Day',
+        };
+
+        console.log(isIdenticalProduct(product,product2))
+
+        function isIdenticalProduct(product1, product2){
+            if(product1.company == product2.company){
+                if(product1.price == product2.price){
+                    if(product1['item-name'] == product2['item-name']){
+                        if(product1['delivery-time'] == product2['delivery-time']){
+                            return true;
+                        }
+                        else    
+                            return false;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        };
+
+        // let product1 = product;
+        // product1.company = "Levis";
+        // console.log(product, product1);
+        // console.log(product['delivery-time']);
+
+        // let obj = {
+        //     message:'good job',
+        //     status: 'complete',
+        // }
+
+        // let {message,status} = obj;
+        // console.log(message,status);
+
+    </script>
+    
+</body>
+</html>

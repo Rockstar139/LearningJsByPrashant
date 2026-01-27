@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+}
+
+button img{
+    width: 100px;
+    height: 100px;
+    /* background-color: bisque; */
+    margin: 10px;
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    background:none;
+    background-color: none;
+}
+
+.reset-btn{
+    width: 100px;
+    height: 30px;
+    font-weight: 700;
+    font-size: medium;
+}

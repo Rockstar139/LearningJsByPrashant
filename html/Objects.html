@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        // // Inside Object
+        // let product = {
+        //     company: 'Mango',
+        //     price: 861,
+        //     'item-name': 'T-Shirt',
+        //     displayPrice: function(){
+        //         console.log(`price of the product is Rs ${this.price}`)
+        //     }
+        // };
+        // product.displayPrice();
+
+        // //Autoboxing
+        // console.log("This is me".toUpperCase());
+
+
+        //Destructuring
+         let product = {
+            company: 'Mango',
+            price: 861,
+            'item-name': 'T-Shirt',
+        }
+
+        // let {company} = product;
+        // console.log(company);
+
+         let {company, price} = product;
+        console.log(company,price);
+
+    </script>
+</body>
+</html>

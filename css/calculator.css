@@ -1,0 +1,28 @@
+.calc-container{
+    width:300px;
+    height:600px;
+    background-color: beige;
+    border: 1px solid grey;
+    padding:10px
+}
+.display-container{
+    display: flex;
+    justify-content: center;
+}
+
+.display-box{
+    width:280px;
+    height:40px;
+}
+
+.btn-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn{
+    height:85px;
+    width: 85px;
+}

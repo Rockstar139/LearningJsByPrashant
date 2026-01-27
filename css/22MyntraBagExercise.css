@@ -1,0 +1,16 @@
+.button{
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.wishlist{
+    padding: 10px 30px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.addToBag{
+    background-color: greenyellow;
+    border: 0;
+    padding: 10px 20px;
+}
