@@ -6,6 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        // let myName = 'Praveen';
+        // let currHour = new Date().getHours();
+        // greetings();
+        // function greetings(){
+        //     if(currHour>5 && currHour<12){
+        //         alert(`Good Morning! ${myName}`);
+        //     }
+        //     else if(currHour>=12 && currHour<18){
+        //         alert(`Good Afternoon! ${myName}`);
+        //     }
+        //     else{
+        //         alert(`Good Night! ${myName}`);
+        //     }
+        // }
+        let ctr = parseInt(localStorage.getItem('ctr')) || 0;
+        let btn = document.createElement('button');
+        btn.innerText = `count:${ctr}`;
+        btn.addEventListener("click",counter);
+        document.querySelector('body').appendChild(btn);
+        updateBtnColor();
+        function updateBtnColor(){
+            if(ctr%2 == 0){
+                document.querySelector('button').style.backgroundColor = "lightgreen";
+            }
+            else{
+                document.querySelector('button').style.backgroundColor = "orange";
+            }
+        }
+
+        function counter(){
+            ctr++;
+            document.querySelector('button').innerText = `count:${ctr}`;
+            updateBtnColor();
+
+            localStorage.setItem('ctr',ctr);
+
+        }
+    </script>
 </body>
 </html>
